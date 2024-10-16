@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Prezentacja wybranego miasta - strona poświęcona opisowi atrakcji, historii i ciekawostek."
+    />
+    <meta
+      name="keywords"
+      content="miasto, atrakcje, historia, zabytki, podróże"
+    />
+    <meta name="author" content="Dinem" />
+    <title>City Navigator</title>
+    <style>
+      body {
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex-grow: 1;
+        overflow: auto;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 55px;
+        background-color: #f4f4f4;
+      }
+
+      footer {
+        padding: 10px 55px;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+      }
+
+      footer img {
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+      }
+
+      footer a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+      }
+
+      footer a:hover {
+        color: #007bff;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        width: 55px;
+        height: 55px;
+        margin-left: 10px;
+      }
+
+      nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+      }
+
+      nav a:hover {
+        color: #007bff;
+      }
+
+      h1,
+      h2 {
+        color: #007bff;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+
+      th {
+        background-color: #f4f4f4;
+        padding: 10px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .highlight {
+        background-color: #f9f9f9;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h2 style="color: black">City Navigator</h2>
+        <img src="city.svg" alt="Logo miasta" />
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="city.html">City</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>
+        <a href="./warsaw.jpg" style="text-decoration: none" download
+          >Warszawa</a
+        >
+        - Stolica Polski
+      </h1>
+
+      <section>
+        <h2>Akapit z informacjami o mieście</h2>
+        <p>
+          Warszawa to największe miasto w Polsce, które pełni funkcję
+          <strong>stolicy kraju</strong>. Jest ważnym ośrodkiem kultury,
+          polityki i gospodarki. Historia Warszawy sięga średniowiecza, a
+          obecnie miasto jest znane z licznych zabytków, nowoczesnej
+          architektury oraz bogatego życia kulturalnego.
+        </p>
+      </section>
+
+      <section>
+        <h2>Zagnieżdżone listy</h2>
+        <ol>
+          <li>
+            Główne atrakcje Warszawy:
+            <ul>
+              <li>Zamek Królewski</li>
+              <li>Pałac Kultury i Nauki</li>
+              <li>Łazienki Królewskie</li>
+            </ul>
+          </li>
+          <li>
+            Kultura i rozrywka:
+            <ul>
+              <li>
+                Muzea:
+                <ul>
+                  <li>Muzeum Powstania Warszawskiego</li>
+                  <li>Muzeum Narodowe</li>
+                </ul>
+              </li>
+              <li>
+                Teatry:
+                <ul>
+                  <li>Teatr Wielki</li>
+                  <li>Teatr Narodowy</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Tabela z danymi o Warszawie</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Właściwość</th>
+              <th>Wartość</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Powierzchnia</td>
+              <td class="highlight">517,24 km²</td>
+            </tr>
+            <tr>
+              <td>Populacja</td>
+              <td>1 780 000</td>
+            </tr>
+            <tr>
+              <td>Województwo</td>
+              <td>Mazowieckie</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Zagnieżdżanie tabeli w tabeli</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Rodzaj zabytku</th>
+              <th>Przykład</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Zamki</td>
+              <td>
+                <table>
+                  <tr>
+                    <td>Zamek Królewski</td>
+                  </tr>
+                  <tr>
+                    <td>Zamek Ujazdowski</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>Parki</td>
+              <td>Łazienki Królewskie</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Łączenie kolumn i wierszy</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Atrakcja</th>
+              <th>Opis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="2">Łazienki Królewskie</td>
+              <td>
+                Znany kompleks parkowo-pałacowy, w którym można podziwiać piękne
+                ogrody i pałace.
+              </td>
+            </tr>
+            <tr>
+              <td>Jedno z najpiękniejszych miejsc do spacerów w Warszawie.</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="center">
+                Odwiedź nas, aby odkryć więcej atrakcji!
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 City Navigator</p>
+      <a href="https://solvro.pwr.edu.pl">
+        <img src="logo_solvro.svg" alt="Logo firmy Solvro" />
+      </a>
+      <a href="mailto:chudzickid@gmail.com"> Email</a>
+    </footer>
+  </body>
+</html>
