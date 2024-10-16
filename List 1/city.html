@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Prezentacja wybranego miasta - strona poświęcona opisowi atrakcji, historii i ciekawostek."
+    />
+    <meta
+      name="keywords"
+      content="miasto, atrakcje, historia, zabytki, podróże"
+    />
+    <meta name="author" content="Dinem" />
+    <title>City Navigator</title>
+    <style>
+      body {
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 55px;
+        background-color: #f4f4f4;
+      }
+
+      main {
+        flex-grow: 1;
+        position: relative;
+        overflow: hidden;
+      }
+
+      footer {
+        padding: 10px 55px;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+      }
+
+      footer img {
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+      }
+
+      footer a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+      }
+
+      footer a:hover {
+        color: #007bff;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        width: 55px;
+        height: 55px;
+        margin-left: 10px;
+      }
+
+      nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+      }
+
+      nav a:hover {
+        color: #007bff;
+      }
+
+      .container {
+        height: 60vh;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        align-items: center;
+      }
+
+      .imgcontainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 150px;
+      }
+
+      .imgcontainer figcaption {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .imgcontainer img {
+        width: 400px;
+        height: 300px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .imgcontainer a {
+        text-decoration: none;
+        color: black;
+      }
+
+      .imgcontainer a:hover {
+        transform: scale(1.1);
+        transition: transform 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h2>City Navigator</h2>
+        <img src="city.svg" alt="Logo miasta" />
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="city.html">City</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="imgcontainer">
+          <a href="warsaw.html">
+            <figure>
+              <figcaption>Warsaw</figcaption>
+              <img src="warsaw.jpg" alt="Zdjęcie miasta Warszawa" />
+            </figure>
+          </a>
+          <a href="wroclaw.html">
+            <figure>
+              <figcaption>Wroclaw</figcaption>
+              <img src="wroclaw.jpg" alt="Zdjęcie miasta Wrocław" />
+            </figure>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 City Navigator</p>
+      <a href="https://solvro.pwr.edu.pl">
+        <img src="logo_solvro.svg" alt="Logo firmy Solvro" />
+      </a>
+      <a href="mailto:chudzickid@gmail.com"> Email</a>
+    </footer>
+  </body>
+</html>

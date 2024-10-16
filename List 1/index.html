@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Prezentacja wybranego miasta - strona poświęcona opisowi atrakcji, historii i ciekawostek."
+    />
+    <meta
+      name="keywords"
+      content="miasto, atrakcje, historia, zabytki, podróże"
+    />
+    <meta name="author" content="Dinem" />
+    <title>City Navigator</title>
+    <style>
+      body {
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex-grow: 1;
+        position: relative;
+        overflow: hidden;
+      }
+
+      main::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("logo_solvro.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.05;
+        z-index: -1;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 55px;
+        background-color: #f4f4f4;
+      }
+
+      footer {
+        padding: 10px 55px;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+      }
+
+      footer img {
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+      }
+
+      footer a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+      }
+
+      footer a:hover {
+        color: #007bff;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        width: 55px;
+        height: 55px;
+        margin-left: 10px;
+      }
+
+      nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+      }
+
+      nav a:hover {
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h2>City Navigator</h2>
+        <img src="city.svg" alt="Logo miasta" />
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="city.html">City</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <div style="display: flex; justify-content: center">
+        <h3>Witaj w City Navigator!</h3>
+      </div>
+      <section style="text-align: center; padding: 50px">
+        <h2>Kim jesteśmy?</h2>
+        <p style="max-width: 600px; margin: 0 auto; line-height: 1.5">
+          City Navigator to platforma stworzona z myślą o wszystkich miłośnikach
+          podróży, historii oraz odkrywaniu nowych miejsc. Nasza misja to
+          dostarczanie kompleksowych i rzetelnych informacji o najciekawszych
+          miastach świata, ich zabytkach, kulturze oraz lokalnych atrakcjach.
+          <strong
+            >Pomagamy Ci odkrywać miasta z zupełnie nowej perspektywy</strong
+          >
+          – od głównych punktów turystycznych po ukryte perełki, które warto
+          zobaczyć.
+        </p>
+        <br />
+        <h3>Dlaczego warto nas wybrać?</h3>
+        <ul
+          style="padding: 0; max-width: 600px; margin: 0 auto; text-align: left"
+        >
+          <li>
+            <strong>Rzetelność:</strong> Wszystkie informacje są starannie
+            sprawdzone przez nasz zespół ekspertów.
+          </li>
+          <li>
+            <strong>Przejrzystość:</strong> Prezentujemy dane w prosty i
+            zrozumiały sposób, aby ułatwić Ci zaplanowanie podróży.
+          </li>
+          <li>
+            <strong>Pasja:</strong> Nasz zespół to grupa pasjonatów podróży,
+            którzy pragną dzielić się swoimi doświadczeniami.
+          </li>
+          <li>
+            <strong>Inspiracja:</strong> Codziennie dostarczamy nowe pomysły na
+            podróże oraz ciekawe kierunki.
+          </li>
+        </ul>
+        <br />
+        <a
+          href="city.html"
+          style="text-decoration: none; font-weight: bold; color: #007bff"
+          >Zacznij z nami</a
+        >
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 City Navigator</p>
+      <a href="https://solvro.pwr.edu.pl">
+        <img src="logo_solvro.svg" alt="Logo firmy Solvro" />
+      </a>
+      <a href="mailto:chudzickid@gmail.com"> Email</a>
+    </footer>
+  </body>
+</html>
