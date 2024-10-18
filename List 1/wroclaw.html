@@ -8,10 +8,7 @@
       name="description"
       content="Prezentacja miasta Wrocław - strona poświęcona opisowi atrakcji, historii i ciekawostek."
     />
-    <meta
-      name="keywords"
-      content="Wrocław, atrakcje, historia, zabytki, podróże"
-    />
+    <meta name="keywords" content="Wrocław, atrakcje, historia, zabytki, podróże" />
     <meta name="author" content="Dinem" />
     <title>City Navigator Wrocław</title>
     <style>
@@ -140,25 +137,40 @@
 
     <main>
       <h1>
-        <a
-          href="https://filetransfer.io/data-package/EOQfPuiY/download"
-          style="text-decoration: none"
+        <a href="https://filetransfer.io/data-package/EOQfPuiY/download" style="text-decoration: none"
           >Wrocław</a
         >
         - Perła Dolnego Śląska
       </h1>
+      <h2>Spis treści</h2>
+      <ol>
+        <li>
+          <a href="#info">Informacje o mieście</a>
+        </li>
+        <li>
+          <a href="#lists">Zagnieżdżone listy</a>
+        </li>
+        <li>
+          <a href="#table">Tabela z danymi o Warszawie</a>
+        </li>
+        <li>
+          <a href="#nested">Zagnieżdżanie tabeli w tabeli</a>
+        </li>
+        <li>
+          <a href="#merge">Łączenie kolumn i wierszy</a>
+        </li>
+      </ol>
 
-      <section>
+      <section id="info">
         <h2>Akapit z informacjami o mieście</h2>
         <p>
-          Wrocław to jedno z najstarszych miast w Polsce, pełniące rolę ważnego
-          ośrodka kulturalnego, akademickiego i gospodarczego. Znane jest ze
-          swojej malowniczej architektury, licznych mostów oraz bogatej
-          historii, sięgającej średniowiecza.
+          Wrocław to jedno z najstarszych miast w Polsce, pełniące rolę ważnego ośrodka kulturalnego,
+          akademickiego i gospodarczego. Znane jest ze swojej malowniczej architektury, licznych mostów oraz
+          bogatej historii, sięgającej średniowiecza.
         </p>
       </section>
 
-      <section>
+      <section id="lists">
         <h2>Zagnieżdżone listy</h2>
         <ol>
           <li>
@@ -191,7 +203,7 @@
         </ol>
       </section>
 
-      <section>
+      <section id="table">
         <h2>Tabela z danymi o Wrocławiu</h2>
         <table>
           <thead>
@@ -217,7 +229,7 @@
         </table>
       </section>
 
-      <section>
+      <section id="nested">
         <h2>Zagnieżdżanie tabeli w tabeli</h2>
         <table>
           <thead>
@@ -248,7 +260,7 @@
         </table>
       </section>
 
-      <section>
+      <section id="merge">
         <h2>Łączenie kolumn i wierszy</h2>
         <table>
           <thead>
@@ -261,20 +273,14 @@
             <tr>
               <td rowspan="2">Panorama Racławicka</td>
               <td>
-                Jedno z najbardziej znanych miejsc we Wrocławiu, prezentujące
-                słynną bitwę pod Racławicami.
+                Jedno z najbardziej znanych miejsc we Wrocławiu, prezentujące słynną bitwę pod Racławicami.
               </td>
             </tr>
             <tr>
-              <td>
-                Obraz o ogromnych rozmiarach, umieszczony w specjalnym
-                rotundzie.
-              </td>
+              <td>Obraz o ogromnych rozmiarach, umieszczony w specjalnym rotundzie.</td>
             </tr>
             <tr>
-              <td colspan="2" class="center">
-                Odwiedź nas, aby odkryć więcej atrakcji!
-              </td>
+              <td colspan="2" class="center">Odwiedź nas, aby odkryć więcej atrakcji!</td>
             </tr>
           </tbody>
         </table>

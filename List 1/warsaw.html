@@ -8,10 +8,7 @@
       name="description"
       content="Prezentacja wybranego miasta - strona poświęcona opisowi atrakcji, historii i ciekawostek."
     />
-    <meta
-      name="keywords"
-      content="miasto, atrakcje, historia, zabytki, podróże"
-    />
+    <meta name="keywords" content="miasto, atrakcje, historia, zabytki, podróże" />
     <meta name="author" content="Dinem" />
     <title>City Navigator</title>
     <style>
@@ -140,24 +137,38 @@
 
     <main>
       <h1>
-        <a href="./warsaw.jpg" style="text-decoration: none" download
-          >Warszawa</a
-        >
+        <a href="./warsaw.jpg" style="text-decoration: none" download>Warszawa</a>
         - Stolica Polski
       </h1>
-
-      <section>
+      <h2>Spis treści</h2>
+      <ol>
+        <li>
+          <a href="#info">Informacje o mieście</a>
+        </li>
+        <li>
+          <a href="#lists">Zagnieżdżone listy</a>
+        </li>
+        <li>
+          <a href="#table">Tabela z danymi o Warszawie</a>
+        </li>
+        <li>
+          <a href="#nested">Zagnieżdżanie tabeli w tabeli</a>
+        </li>
+        <li>
+          <a href="#merge">Łączenie kolumn i wierszy</a>
+        </li>
+      </ol>
+      <section id="info">
         <h2>Akapit z informacjami o mieście</h2>
         <p>
           Warszawa to największe miasto w Polsce, które pełni funkcję
-          <strong>stolicy kraju</strong>. Jest ważnym ośrodkiem kultury,
-          polityki i gospodarki. Historia Warszawy sięga średniowiecza, a
-          obecnie miasto jest znane z licznych zabytków, nowoczesnej
+          <strong>stolicy kraju</strong>. Jest ważnym ośrodkiem kultury, polityki i gospodarki. Historia
+          Warszawy sięga średniowiecza, a obecnie miasto jest znane z licznych zabytków, nowoczesnej
           architektury oraz bogatego życia kulturalnego.
         </p>
       </section>
 
-      <section>
+      <section id="lists">
         <h2>Zagnieżdżone listy</h2>
         <ol>
           <li>
@@ -190,7 +201,7 @@
         </ol>
       </section>
 
-      <section>
+      <section id="table">
         <h2>Tabela z danymi o Warszawie</h2>
         <table>
           <thead>
@@ -216,7 +227,7 @@
         </table>
       </section>
 
-      <section>
+      <section id="nested">
         <h2>Zagnieżdżanie tabeli w tabeli</h2>
         <table>
           <thead>
@@ -247,7 +258,7 @@
         </table>
       </section>
 
-      <section>
+      <section id="merge">
         <h2>Łączenie kolumn i wierszy</h2>
         <table>
           <thead>
@@ -259,18 +270,13 @@
           <tbody>
             <tr>
               <td rowspan="2">Łazienki Królewskie</td>
-              <td>
-                Znany kompleks parkowo-pałacowy, w którym można podziwiać piękne
-                ogrody i pałace.
-              </td>
+              <td>Znany kompleks parkowo-pałacowy, w którym można podziwiać piękne ogrody i pałace.</td>
             </tr>
             <tr>
               <td>Jedno z najpiękniejszych miejsc do spacerów w Warszawie.</td>
             </tr>
             <tr>
-              <td colspan="2" class="center">
-                Odwiedź nas, aby odkryć więcej atrakcji!
-              </td>
+              <td colspan="2" class="center">Odwiedź nas, aby odkryć więcej atrakcji!</td>
             </tr>
           </tbody>
         </table>
