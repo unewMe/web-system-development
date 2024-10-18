@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Skontaktuj się z nami za pomocą formularza kontaktowego."
+    />
+    <meta
+      name="keywords"
+      content="kontakt, formularz, miasto, pytania, wiadomość"
+    />
+    <meta name="author" content="Dinem" />
+    <title>Contact - City Navigator</title>
+    <style>
+      body {
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 55px;
+        background-color: #f4f4f4;
+      }
+
+      main {
+        display: flex;
+        flex-grow: 1;
+        overflow: hidden;
+        align-items: center;
+      }
+
+      footer {
+        padding: 10px 55px;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+      }
+
+      footer img {
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+      }
+
+      footer a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+      }
+
+      footer a:hover {
+        color: #007bff;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        width: 55px;
+        height: 55px;
+        margin-left: 10px;
+      }
+
+      nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+      }
+
+      nav a:hover {
+        color: #007bff;
+      }
+
+      .container {
+        width: 50%;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      select,
+      input[type="text"],
+      textarea {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h2>City Navigator</h2>
+        <img src="city.svg" alt="Logo miasta" />
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="city.html">City</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <h2>Kontakt</h2>
+        <form action="submit_form.php" method="post">
+          <!-- Kilka pól tekstowych -->
+          <label for="name">Imię:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" required />
+
+          <label for="phone">Telefon:</label>
+          <input type="text" id="phone" name="phone" required />
+
+          <!-- Rozwijana lista z podlistą -->
+          <label for="topic">Wybierz temat kontaktu:</label>
+          <select id="topic" name="topic" required>
+            <option value="general">Ogólne zapytanie</option>
+            <option value="support">Wsparcie techniczne</option>
+            <option value="feedback">Opinie i sugestie</option>
+          </select>
+
+          <!-- Grupa elementów jednokrotnego wyboru (radio) -->
+          <p>Preferowany sposób kontaktu:</p>
+          <label>
+            <input type="radio" name="contact_method" value="email" required />
+            Email
+          </label>
+          <label>
+            <input type="radio" name="contact_method" value="phone" required />
+            Telefon
+          </label>
+
+          <!-- Grupa elementów wielokrotnego wyboru (checkbox) -->
+          <p>Zgody:</p>
+          <label>
+            <input type="checkbox" name="terms" value="agree" required />
+            Akceptuję regulamin
+          </label>
+          <label>
+            <input type="checkbox" name="newsletter" value="subscribe" />
+            Chcę otrzymywać newsletter
+          </label>
+
+          <!-- Pole tekstowe (text area) -->
+          <label for="message">Wiadomość:</label>
+          <textarea id="message" name="message" maxlength="200"></textarea>
+
+          <!-- Przyciski do czyszczenia i wysłania formularza -->
+          <div class="buttons">
+            <button type="reset">Wyczyść</button>
+            <button type="submit">Wyślij</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 City Navigator</p>
+      <a href="https://solvro.pwr.edu.pl">
+        <img src="logo_solvro.svg" alt="Logo firmy Solvro" />
+      </a>
+      <a href="mailto:chudzickid@gmail.com"> Email</a>
+    </footer>
+  </body>
+</html>
