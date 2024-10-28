@@ -6,10 +6,46 @@
     <title>Formularz osobowy</title>
     <style>
       body {
+        height: 100vh;
         font-family: Arial, sans-serif;
         margin: 0;
-        padding: 20px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 55px;
         background-color: #f4f4f4;
+      }
+
+      nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+      }
+
+      nav a:hover {
+        color: #007bff;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        width: 55px;
+        height: 55px;
+        margin-left: 10px;
       }
 
       h1 {
@@ -84,7 +120,7 @@
     <form autocomplete="on">
       <div class="form-group">
         <label for="firstName">Imię:</label>
-        <input type="text" id="firstName" name="firstName" autocomplete="given-name" required autofocus />
+        <input type="text" id="firstName" name="firstName" autocomplete="given-name" autofocus />
         <span class="info">Wpisz swoje imię</span>
       </div>
 
@@ -96,7 +132,7 @@
 
       <div class="form-group">
         <label for="birthMonth">Miesiąc urodzin:</label>
-        <input list="months" id="birthMonth" name="birthMonth" required />
+        <input list="months" id="birthMonth" name="birthMonth" />
         <datalist id="months">
           <option value="Styczeń"></option>
           <option value="Luty"></option>
@@ -123,14 +159,7 @@
 
       <div class="form-group">
         <label for="phone">Telefon:</label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          autocomplete="tel"
-          pattern="\+\d{2} \d{3}-\d{3}-\d{3}"
-          required
-        />
+        <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="\+\d{2} \d{3}-\d{3}-\d{3}" />
         <span class="info">Wpisz swój numer telefonu w formacie +XX XXX-XXX-XXX</span>
       </div>
 
