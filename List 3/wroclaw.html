@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Prezentacja miasta Wrocław - strona poświęcona opisowi atrakcji, historii i ciekawostek."
+    />
+    <meta name="keywords" content="Wrocław, atrakcje, historia, zabytki, podróże" />
+    <meta name="author" content="Dinem" />
+    <title>City Navigator Wrocław</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h2 style="color: black">City Navigator</h2>
+        <img src="city.svg" alt="Logo miasta" />
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="city.html">City</a>
+        <a href="contact.html">Contact</a>
+        <a href="personal-form.html">Form</a>
+        <a href="additional-info-form.html">Additional</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>
+        <a href="https://filetransfer.io/data-package/EOQfPuiY/download" style="text-decoration: none"
+          >Wrocław</a
+        >
+        - Perła Dolnego Śląska
+      </h1>
+      <h2>Spis treści</h2>
+      <ol>
+        <li>
+          <a href="#info">Informacje o mieście</a>
+        </li>
+        <li>
+          <a href="#more">Więcej o Wrocławiu</a>
+        </li>
+        <li>
+          <a href="#population">Populacja Wrocławia</a>
+        </li>
+        <li>
+          <a href="#lists">Zagnieżdżone listy</a>
+        </li>
+        <li>
+          <a href="#table">Tabela z danymi o Warszawie</a>
+        </li>
+        <li>
+          <a href="#nested">Zagnieżdżanie tabeli w tabeli</a>
+        </li>
+        <li>
+          <a href="#merge">Łączenie kolumn i wierszy</a>
+        </li>
+      </ol>
+
+      <section id="info">
+        <h2>Akapit z informacjami o mieście</h2>
+        <p>
+          Wrocław to jedno z najstarszych miast w Polsce, pełniące rolę ważnego ośrodka kulturalnego,
+          akademickiego i gospodarczego. Znane jest ze swojej malowniczej architektury, licznych mostów oraz
+          bogatej historii, sięgającej <mark>średniowiecza</mark>.
+        </p>
+      </section>
+
+      <section id="more">
+        <details>
+          <summary>Więcej o Wrocławiu</summary>
+          <p>
+            Wrocław, znany również jako "Miasto Mostów", ma ponad 120 mostów i kładek, które łączą różne wyspy
+            na Odrze. Jest również domem dla słynnego Uniwersytetu Wrocławskiego, jednego z najstarszych w
+            Polsce.
+          </p>
+        </details>
+      </section>
+
+      <section id="population">
+        <h2>Populacja Wrocławia w skali Polski</h2>
+        <p>Populacja Wrocławia:</p>
+        <meter value="893506" min="0" max="37636508">893 506</meter>
+      </section>
+
+      <aside>
+        <h3>Ciekawostki o Wrocławiu</h3>
+        <ul>
+          <li>Wrocław jest miastem uniwersytetów, ma wiele uczelni wyższych.</li>
+          <li>Wrocław był Europejską Stolicą Kultury w 2016 roku.</li>
+          <li>Wrocław ma swoją maskotkę - krasnoludka!</li>
+        </ul>
+      </aside>
+
+      <section id="lists">
+        <h2>Zagnieżdżone listy</h2>
+        <ol>
+          <li>
+            Główne atrakcje Wrocławia:
+            <ul>
+              <li>Rynek Główny</li>
+              <li>Ostrów Tumski</li>
+              <li>Panorama Racławicka</li>
+            </ul>
+          </li>
+          <li>
+            Kultura i rozrywka:
+            <ul>
+              <li>
+                Muzea:
+                <ul>
+                  <li>Muzeum Narodowe</li>
+                  <li>Muzeum Sztuki Współczesnej</li>
+                </ul>
+              </li>
+              <li>
+                Teatry:
+                <ul>
+                  <li>Teatr Współczesny</li>
+                  <li>Teatr Polski</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section id="table">
+        <h2>Tabela z danymi o Wrocławiu</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Właściwość</th>
+              <th>Wartość</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Powierzchnia</td>
+              <td class="highlight">292,92 km²</td>
+            </tr>
+            <tr>
+              <td>Populacja</td>
+              <td>640 000</td>
+            </tr>
+            <tr>
+              <td>Województwo</td>
+              <td>Dolnośląskie</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="nested">
+        <h2>Zagnieżdżanie tabeli w tabeli</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Rodzaj zabytku</th>
+              <th>Przykład</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Zamki</td>
+              <td>
+                <table>
+                  <tr>
+                    <td>Zamek Piastowski</td>
+                  </tr>
+                  <tr>
+                    <td>Zamek Książąt Opolskich</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>Parki</td>
+              <td>Park Szczytnicki</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="merge">
+        <h2>Łączenie kolumn i wierszy</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Atrakcja</th>
+              <th>Opis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="2">Panorama Racławicka</td>
+              <td>
+                Jedno z najbardziej znanych miejsc we Wrocławiu, prezentujące słynną bitwę pod Racławicami.
+              </td>
+            </tr>
+            <tr>
+              <td>Obraz o ogromnych rozmiarach, umieszczony w specjalnym rotundzie.</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="center">Odwiedź nas, aby odkryć więcej atrakcji!</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 City Navigator</p>
+      <a href="https://solvro.pwr.edu.pl">
+        <img src="logo_solvro.svg" alt="Logo firmy Solvro" />
+      </a>
+      <a href="mailto:chudzickid@gmail.com"> Email</a>
+    </footer>
+  </body>
+</html>
