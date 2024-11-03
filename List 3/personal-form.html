@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formularz osobowy</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h2>City Navigator</h2>
+        <img src="city.svg" alt="Logo miasta" />
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="city.html">City</a>
+        <a href="contact.html">Contact</a>
+        <a href="personal-form.html">Form</a>
+        <a href="additional-info-form.html">Additional</a>
+      </nav>
+    </header>
+    <h1>Formularz osobowy</h1>
+    <form autocomplete="on">
+      <div class="form-group">
+        <label for="firstName">Imię:</label>
+        <input type="text" id="firstName" name="firstName" autocomplete="given-name" autofocus />
+        <span class="info">Wpisz swoje imię</span>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Nazwisko:</label>
+        <input type="text" id="lastName" name="lastName" autocomplete="family-name" required />
+        <span class="info">Wpisz swoje nazwisko</span>
+      </div>
+
+      <div class="form-group">
+        <label for="birthMonth">Miesiąc urodzin:</label>
+        <input list="months" id="birthMonth" name="birthMonth" />
+        <datalist id="months">
+          <option value="Styczeń"></option>
+          <option value="Luty"></option>
+          <option value="Marzec"></option>
+          <option value="Kwiecień"></option>
+          <option value="Maj"></option>
+          <option value="Czerwiec"></option>
+          <option value="Lipiec"></option>
+          <option value="Sierpień"></option>
+          <option value="Wrzesień"></option>
+          <option value="Październik"></option>
+          <option value="Listopad"></option>
+          <option value="Grudzień"></option>
+        </datalist>
+
+        <span class="info">Wybierz miesiąc swojego urodzenia</span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Adres e-mail:</label>
+        <input type="email" id="email" name="email" autocomplete="email" required />
+        <span class="info">Wpisz swój adres e-mail</span>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Telefon:</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="\+\d{2} \d{3}-\d{3}-\d{3}" />
+        <span class="info">Wpisz swój numer telefonu w formacie +XX XXX-XXX-XXX</span>
+      </div>
+
+      <button type="submit">Wyślij</button>
+    </form>
+  </body>
+</html>
