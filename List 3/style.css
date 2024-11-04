@@ -41,20 +41,26 @@ main::before {
 }
 
 .greeting {
-  font-size: 1.5em; /* wykorzystanie em */
+  font-size: 1.5em;
 }
 
 .question {
-  font-size: 120%; /* wykorzystanie % */
+  font-size: 120%;
 }
 
 h1 {
-  font-size: 24px; /* wykorzystanie px */
+  font-size: 24px;
+  font-style: italic;
+  font-variant: small-caps;
+  line-height: 30px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 h2 {
-  font-size: 18pt; /* wykorzystanie pt */
+  font-size: 18pt;
 }
+
 header {
   display: flex;
   align-items: center;
@@ -149,8 +155,12 @@ input[type="range"],
 input[type="search"] {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 4px;
+}
+
+input:required {
+  border: 1px solid red;
 }
 
 button {
@@ -256,17 +266,6 @@ label {
   margin-left: 5px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="month"],
-select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 button {
   padding: 10px 15px;
   background-color: #007bff;
@@ -329,4 +328,59 @@ a:visited {
 a:hover {
   text-decoration: underline;
   color: #004b8b;
+}
+
+.summary > li {
+  list-style-type: none;
+}
+
+button:active {
+  box-shadow: 2px 2px 5px #fc894d;
+}
+
+input:checked {
+  background-color: #007bff;
+}
+
+input:disabled {
+  background-color: #eaeaea;
+  color: #888;
+}
+
+li:first-child {
+  font-weight: bold;
+}
+
+li:last-child {
+  color: #007bff;
+}
+
+input:focus {
+  outline: 2px solid #007bff;
+}
+
+a:link {
+  color: #007bff;
+}
+
+a:visited {
+  color: #5a5a5a;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #004b8b;
+}
+
+#more-population {
+  display: flex;
+}
+
+section:first-of-type {
+  background-color: black;
+  color: white;
+}
+
+section:nth-last-child(2) {
+  background-color: red;
 }
