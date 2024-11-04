@@ -86,8 +86,9 @@
 
       .container {
         width: 50%;
+        max-width: 700px;
         margin: 20px auto;
-        padding: 20px;
+        padding: 10px;
         background-color: #f9f9f9;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -99,11 +100,7 @@
         gap: 15px;
       }
 
-      select,
-      input[type="text"],
-      input[type="email"],
-      input[type="tel"],
-      textarea {
+      .input {
         width: 90%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -140,17 +137,23 @@
       <div class="container">
         <h2>Kontakt</h2>
         <form action="submit_form.php" method="post">
-          <label for="name">Imię:</label>
-          <input type="text" id="name" name="name" required />
+          <label>
+            Imię i nazwisko:
+            <input class="input" type="text" name="name" required />
+          </label>
 
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+          <label>
+            Email:
+            <input class="input" type="email" name="email" required />
+          </label>
 
-          <label for="phone">Telefon:</label>
-          <input type="tel" id="phone" name="phone" required />
+          <label>
+            Telefon:
+            <input class="input" type="tel" name="phone" />
+          </label>
 
           <label for="topic">Wybierz temat kontaktu:</label>
-          <select id="topic" name="topic" required>
+          <select class="input" id="topic" name="topic" required>
             <option value="general">Ogólne zapytanie</option>
             <option value="support">Wsparcie techniczne</option>
             <option value="feedback">Opinie i sugestie</option>
@@ -177,7 +180,12 @@
           </label>
 
           <label for="message">Wiadomość:</label>
-          <textarea id="message" name="message" maxlength="200"></textarea>
+          <textarea
+            id="message"
+            class="input"
+            name="message"
+            maxlength="200"
+          ></textarea>
 
           <div class="buttons">
             <button type="reset">Wyczyść</button>
