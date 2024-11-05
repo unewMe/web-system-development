@@ -40,6 +40,7 @@ main::before {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
   opacity: 0.05;
   z-index: -1;
 }
