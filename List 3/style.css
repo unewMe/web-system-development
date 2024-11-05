@@ -19,6 +19,10 @@ main {
   }
 }
 
+input:enabled {
+  cursor: help;
+}
+
 main.landing {
   flex-grow: 1;
   position: relative;
@@ -46,6 +50,10 @@ main::before {
 
 .question {
   font-size: 120%;
+}
+
+td:empty {
+  background-color: black;
 }
 
 h1 {
@@ -397,6 +405,28 @@ section:first-of-type {
   color: white;
 }
 
+section:last-of-type {
+  background: #007bff;
+}
+
 section:nth-last-child(2) {
   background: red;
+}
+
+li:not(:nth-child(3)) {
+  color: #fc894d;
+}
+
+li:only-child {
+  color: fuchsia;
+}
+
+@page :first {
+  width: 100%;
+  height: 100%;
+}
+
+:target {
+  border: 2px solid darkorange;
+  background-color: beige;
 }
