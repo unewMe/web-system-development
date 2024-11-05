@@ -431,3 +431,9 @@ li:only-child {
   border: 2px solid darkorange;
   background-color: beige;
 }
+
+#fixed {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+}
