@@ -94,6 +94,16 @@ footer a:hover {
   color: #007bff;
 }
 
+.footer {
+  position: relative;
+}
+
+.absolute-email {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -105,8 +115,14 @@ footer a:hover {
   margin-left: 10px;
 }
 
+.sticky-heading {
+  position: sticky;
+  top: 20px;
+}
+
 nav {
   display: flex;
+  position: static;
   gap: 30px;
 }
 
@@ -382,5 +398,5 @@ section:first-of-type {
 }
 
 section:nth-last-child(2) {
-  background-color: red;
+  background: red;
 }
