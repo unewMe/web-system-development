@@ -1,0 +1,226 @@
+/* 1. Zmiana wielkości tekstu w różny sposób */
+.greeting {
+  font-size: 1.5em; /* wykorzystanie em */
+}
+
+.question {
+  font-size: 120%; /* wykorzystanie % */
+}
+
+h1 {
+  font-size: 24px; /* wykorzystanie px */
+}
+
+h2 {
+  font-size: 18pt; /* wykorzystanie pt */
+}
+
+/* 2. Różne sposoby ustawienia tła */
+body {
+  background-color: #eaeaea; /* proste tło koloru */
+}
+
+main.landing::before {
+  background-image: url("logo_solvro.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* tło pozostaje przy przewijaniu */
+  opacity: 0.05;
+}
+
+header {
+  background-color: #f4f4f4;
+  background-image: url("header-background.jpg");
+  background-repeat: repeat-x; /* powtarzanie tła tylko w poziomie */
+  background-size: cover; /* rozciągnięcie tła na całą szerokość */
+  background-position: top center; /* wyśrodkowanie tła */
+}
+
+/* 3. Różne sposoby definiowania selektorów CSS */
+#info {
+  color: #333; /* identyfikator */
+}
+
+.highlight {
+  font-weight: bold; /* klasa */
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+form .form-group > label {
+  color: #555; /* selektor dzieci */
+}
+
+/* 4. Box model i pozycjonowanie */
+.container {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+aside {
+  float: right;
+  width: 25%;
+  padding: 10px;
+  margin: 10px;
+}
+
+form {
+  padding: 80px;
+  max-width: 500px;
+  margin: auto;
+  position: relative;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+button {
+  position: relative;
+  top: 5px;
+  left: 5px;
+}
+
+footer {
+  position: static;
+  clear: both;
+}
+
+/* 5. Formatowanie tekstu */
+h1 {
+  font-weight: bold;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 1.5em;
+  line-height: 1.2;
+  font-family: Arial, sans-serif;
+}
+
+/* 6. Border styles */
+.container-contact {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #007bff;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* 7. Stylowanie tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.center {
+  text-align: center;
+}
+
+.highlight {
+  background-color: #f0f8ff;
+}
+
+/* 8. Reguły @media */
+@media screen and (max-width: 768px) {
+  nav {
+    display: block;
+  }
+  .imgcontainer {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* 9. Pseudoklasy */
+button:active {
+  background-color: #0056b3;
+}
+
+input:checked {
+  background-color: #007bff;
+}
+
+input:disabled {
+  background-color: #eaeaea;
+  color: #888;
+}
+
+li:first-child {
+  font-weight: bold;
+}
+
+li:last-child {
+  color: #007bff;
+}
+
+input:focus {
+  outline: 2px solid #007bff;
+}
+
+a:link {
+  color: #007bff;
+}
+
+a:visited {
+  color: #5a5a5a;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #004b8b;
+}
+
+/* 10. Szablon menu wielopoziomowego */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+nav ul li:hover > ul {
+  display: block;
+}
+
+nav ul li ul li ul {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+nav ul li ul li:hover > ul {
+  display: block;
+}

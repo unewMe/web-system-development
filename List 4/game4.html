@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sum N Numbers</title>
+  </head>
+  <body>
+    <h2>Sum N Numbers</h2>
+    <button onclick="sumNumbers()">Start Summing</button>
+    <p id="sumResult"></p>
+    <script>
+      function sumNumbers() {
+        const count = parseInt(
+          prompt("How many numbers would you like to sum?")
+        );
+        let sum = 0;
+        for (let i = 0; i < count; i++) {
+          const num = parseFloat(prompt("Enter number " + (i + 1) + ":"));
+          sum += num;
+          alert("Current sum: " + sum);
+        }
+        document.getElementById("sumResult").textContent = "Total sum: " + sum;
+      }
+    </script>
+  </body>
+</html>

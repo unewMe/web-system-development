@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strona 1</title>
+    <link rel="stylesheet" href="menu.css" />
+    <script src="./scripts/global.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        updateIntDisplay("int-display", "string-display");
+        const button = document.getElementById("remove-a");
+        button.addEventListener("click", () => {
+          if (globalInt > 0) {
+            globalInt--;
+            globalString = globalString.slice(0, -1);
+            updateIntDisplay("int-display", "string-display");
+            saveGlobals();
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navmenu">
+      <ul>
+        <li><a href="page1.html">Strona 1</a></li>
+        <li><a href="page2.html">Strona 2</a></li>
+        <li><a href="menu.html">Cofnij</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Strona 1</h1>
+      <button id="remove-a">Usuń 'a'</button>
+      <div id="int-display"></div>
+      <div id="string-display"></div>
+    </main>
+  </body>
+</html>

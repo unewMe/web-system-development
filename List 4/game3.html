@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guess the Number with N Attempts</title>
+  </head>
+  <body>
+    <h2>Guess the Number (1-100) with N Attempts</h2>
+    <button onclick="startCustomGame()">Start Game</button>
+    <p id="customResult"></p>
+    <script>
+      function startCustomGame() {
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        const attempts = parseInt(prompt("How many attempts would you like?"));
+        let guess;
+        for (let i = 0; i < attempts; i++) {
+          guess = parseInt(prompt("Enter your guess (1-100):"));
+          if (guess === randomNumber) {
+            document.getElementById("customResult").textContent =
+              "Correct! The number was " + randomNumber;
+            return;
+          } else if (guess < randomNumber) {
+            alert("Too low!");
+          } else {
+            alert("Too high!");
+          }
+        }
+        document.getElementById("customResult").textContent =
+          "Out of attempts! The correct number was " + randomNumber;
+      }
+    </script>
+  </body>
+</html>
