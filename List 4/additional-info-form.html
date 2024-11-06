@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Formularz personalny dodatkowy" />
+    <meta name="keywords" content="formularz, personalny, dodatkowy" />
+    <meta name="author" content="Dinem" />
+    <title>Dodatkowe informacje o użytkowniku</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h2>City Navigator</h2>
+        <img src="city.svg" alt="Logo miasta" />
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="city.html">City</a>
+        <a href="contact.html">Contact</a>
+        <a href="personal-form.html">Form</a>
+        <a href="additional-info-form.html">Additional</a>
+      </nav>
+    </header>
+    <h1>Dodatkowe informacje o użytkowniku</h1>
+    <form>
+      <div class="form-group" style="height: 100px">
+        <label for="favcolor">Select your favorite color:</label>
+        <input type="color" id="favcolor" name="favcolor" value="#ff0000" style="height: 80%" />
+      </div>
+
+      <div class="form-group">
+        <label for="birthMonth">Miesiąc urodzin:</label>
+        <input type="month" id="birthMonth" name="birthMonth" placeholder="Miesiąc urodzin" />
+      </div>
+
+      <div class="form-group">
+        <label for="ageRange">Wiek:</label>
+        <input
+          type="range"
+          id="ageRange"
+          name="ageRange"
+          min="0"
+          max="100"
+          value="50"
+          oninput="updateAgeDisplay(this.value)"
+        />
+        <span id="ageDisplay">50</span>
+      </div>
+      <div class="form-group">
+        <label for="searchInterest">Czego szukasz?</label>
+        <input type="search" id="searchInterest" name="searchInterest" placeholder="Wpisz, czego szukasz" />
+      </div>
+
+      <div class="form-group">
+        <label for="website">Strona internetowa:</label>
+        <input type="url" id="website" name="website" placeholder="https://example.com" />
+      </div>
+
+      <button type="submit">Wyślij</button>
+    </form>
+    <script>
+      function updateAgeDisplay(value) {
+        document.getElementById("ageDisplay").textContent = value;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pokaz menu wielopoziomowego" />
+    <meta name="keywords" content="menu, prezentacja" />
+    <meta name="author" content="Dinem" />
+    <title>Menu</title>
+
+    <link rel="stylesheet" href="menu.css" />
+    <script src="./scripts/resize.js"></script>
+    <script src="./scripts/index.js"></script>
+  </head>
+  <body>
+    <script>
+      window.addEventListener("resize", changeBackgroundColor);
+
+      // Dodajemy logikę do przycisku
+      window.onload = async function () {
+        await loadJokes();
+        const button = document.getElementById("get-joke-button");
+        button.addEventListener("click", function () {
+          const age = window.prompt("Podaj swój wiek:");
+          if (age < 18) {
+            const disableRestrictions = window.confirm(
+              "Czy chcesz wyłączyć ograniczenia wiekowe?"
+            );
+
+            if (disableRestrictions) {
+              window.alert("Twoi rodzice zostali poinformowani.");
+              return;
+            } else {
+              window.alert("Szanuje za twoją decyzję.");
+            }
+          }
+          document.getElementById("joke").innerHTML = getRandomJoke().body;
+        });
+      };
+    </script>
+
+    <nav class="navmenu">
+      <ul>
+        <li class="submenu">
+          <a href="#">Menu</a>
+          <div class="first">
+            <ul>
+              <li class="submenu">
+                <a href="#">Kategoria1</a>
+                <div>
+                  <ul>
+                    <li class="submenu">
+                      <a href="#">PodKategoria</a>
+                      <div>
+                        <ul>
+                          <li class="submenu">
+                            <a href="page1.html">PodpodKategoria</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="submenu">
+                <a href="#">Kategoria2</a>
+                <div>
+                  <ul>
+                    <li class="submenu">
+                      <a href="#">PodKategoria</a>
+                      <div>
+                        <ul>
+                          <li class="submenu">
+                            <a href="page2.html">PodpodKategoria</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="submenu">
+                <a href="#">Kategoria3</a>
+                <div>
+                  <ul>
+                    <li class="submenu">
+                      <a href="#">PodKategoria</a>
+                      <div>
+                        <ul>
+                          <li class="submenu">
+                            <a href="page3.html">PodpodKategoria</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class = "submenu">
+                <a href = "#"> Games </a>
+                <div>
+                  <ul>
+                    <li class = "submenu">
+                      <a href = "game1.html"> Game 1 </a>
+                    </li>
+                    <li class = "submenu">
+                      <a href = "game2.html"> Game 2 </a>
+                    </li>
+                    <li class = "submenu">
+                      <a href = "game3.html"> Game 3 </a>
+                    </li>
+                    <li class = "submenu">
+                      <a href = "game4.html"> Game 4 </a>
+                    </li>
+                  </ul>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Menu wielopoziomowe</h1>
+      <p style="margin-bottom: 20px">
+        Menu wielopoziomowe to menu, które pozwala na wyświetlenie wielu
+        poziomów podstron. W tym przypadku mamy trzy poziomy. Warto zauważyć, że
+        menu wielopoziomowe jest bardzo przydatne, gdy chcemy wyświetlić wiele
+        kategorii i podkategorii.
+      </p>
+      <div>Joke of the day: <span id="joke">aaa</span></div>
+      <button id="get-joke-button">Pobierz żart</button>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guess the Month</title>
+  </head>
+  <body>
+    <h2>Guess the Month</h2>
+    <p>Try to guess the month! You have 3 chances.</p>
+    <button onclick="startGame()">Start Game</button>
+    <p id="result"></p>
+    <script>
+      function startGame() {
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        const randomMonth = months[Math.floor(Math.random() * 12)];
+        let attempts = 3;
+        let guess;
+        while (attempts > 0) {
+          guess = prompt("Enter your guess for the month:");
+          if (guess === randomMonth) {
+            document.getElementById("result").textContent =
+              "Correct! The month was " + randomMonth;
+            return;
+          }
+          attempts--;
+        }
+        document.getElementById("result").textContent =
+          "Out of chances! The correct month was " + randomMonth;
+      }
+    </script>
+  </body>
+</html>

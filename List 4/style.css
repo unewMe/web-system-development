@@ -1,0 +1,439 @@
+body {
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  overflow: auto;
+  padding-inline: 150px;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding-inline: 20px;
+  }
+}
+
+input:enabled {
+  cursor: help;
+}
+
+main.landing {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("logo_solvro.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.greeting {
+  font-size: 1.5em;
+}
+
+.question {
+  font-size: 120%;
+}
+
+td:empty {
+  background-color: black;
+}
+
+h1 {
+  font-size: 24px;
+  font-style: italic;
+  font-variant: small-caps;
+  line-height: 30px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+h2 {
+  font-size: 18pt;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 55px;
+  background-color: #f4f4f4;
+}
+
+footer {
+  padding: 10px 55px;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+footer img {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+footer a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+footer a:hover {
+  color: #007bff;
+}
+
+.footer {
+  position: relative;
+}
+
+.absolute-email {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 55px;
+  height: 55px;
+  margin-left: 10px;
+}
+
+.sticky-heading {
+  position: sticky;
+  top: 20px;
+}
+
+nav {
+  display: flex;
+  position: static;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: #fff;
+  padding: 80px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: auto;
+}
+
+form .form-group > label {
+  color: #555; /* selektor dzieci */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="color"],
+input[type="url"],
+input[type="month"],
+input[type="range"],
+input[type="search"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 4px;
+}
+
+input:required {
+  border: 1px solid red;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.imgcontainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 150px;
+}
+
+.imgcontainer figcaption {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.imgcontainer img {
+  width: 400px;
+  height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.imgcontainer a {
+  text-decoration: none;
+  color: black;
+}
+
+.imgcontainer a:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+th {
+  background-color: #f4f4f4;
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+.highlight {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+form {
+  background-color: #fff;
+  padding: 80px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.info {
+  font-size: 0.9em;
+  color: #888;
+  margin-left: 5px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.container-contact {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #007bff;
+  padding: 20px;
+  margin: 20px;
+}
+
+button:active {
+  background-color: #0056b3;
+}
+
+input:checked {
+  background-color: #007bff;
+}
+
+input:disabled {
+  background-color: #eaeaea;
+  color: #888;
+}
+
+li:first-child {
+  font-weight: bold;
+}
+
+li:last-child {
+  color: #007bff;
+}
+
+input:focus {
+  outline: 2px solid #007bff;
+}
+
+a:link {
+  color: #007bff;
+}
+
+a:visited {
+  color: #5a5a5a;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #004b8b;
+}
+
+.summary > li {
+  list-style-type: none;
+}
+
+button:active {
+  box-shadow: 2px 2px 5px #fc894d;
+}
+
+input:checked {
+  background-color: #007bff;
+}
+
+input:disabled {
+  background-color: #eaeaea;
+  color: #888;
+}
+
+li:first-child {
+  font-weight: bold;
+}
+
+li:last-child {
+  color: #007bff;
+}
+
+input:focus {
+  outline: 2px solid #007bff;
+}
+
+a:link {
+  color: #007bff;
+}
+
+a:visited {
+  color: #5a5a5a;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #004b8b;
+}
+
+#more-population {
+  display: flex;
+}
+
+section:first-of-type {
+  background-color: black;
+  color: white;
+}
+
+section:last-of-type {
+  background: #007bff;
+}
+
+section:nth-last-child(2) {
+  background: red;
+}
+
+li:not(:nth-child(3)) {
+  color: #fc894d;
+}
+
+li:only-child {
+  color: fuchsia;
+}
+
+@page :first {
+  width: 100%;
+  height: 100%;
+}
+
+:target {
+  border: 2px solid darkorange;
+  background-color: beige;
+}
+
+#fixed {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strona 3</title>
+    <link rel="stylesheet" href="menu.css" />
+    <script src="global.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById("process-input");
+        button.addEventListener("click", () => {
+          let userInput;
+          do {
+            userInput = window.prompt(
+              "Podaj liczbę (całkowitą lub zmiennoprzecinkową):"
+            );
+          } while (isNaN(parseFloat(userInput)));
+
+          const number = parseFloat(userInput);
+          const integerPart = parseInt(number);
+          let message = "";
+
+          switch (integerPart % 3) {
+            case 0:
+              message = "Liczba jest podzielna przez 3.";
+              break;
+            case 1:
+              message = "Reszta z dzielenia liczby przez 3 wynosi 1.";
+              break;
+            case 2:
+              message = "Reszta z dzielenia liczby przez 3 wynosi 2.";
+              break;
+            default:
+              message = "Nieznana wartość.";
+          }
+
+          document.getElementById("result").innerHTML = message;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navmenu">
+      <ul>
+        <li><a href="page3.html">Cofnij</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Strona 3</h1>
+      <button id="process-input">Podaj liczbę</button>
+      <div id="result"></div>
+    </main>
+  </body>
+</html>
