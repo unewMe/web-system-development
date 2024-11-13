@@ -1,14 +1,13 @@
 "use strict";
-let liCounter = 0;
 
 const root = document.getElementById("root");
 
 const list = document.createElement("ul");
 
-const createLiItem = () => {
+const createLiItem = (number) => {
   const li = document.createElement("li");
 
-  const liText = document.createTextNode(`element ${liCounter + 1}`);
+  const liText = document.createTextNode(`element ${number}`);
 
   const liButtonDelete = document.createElement("button");
   const liButtonDeleteText = document.createTextNode("Usuń");
@@ -21,7 +20,7 @@ const createLiItem = () => {
   const liButtonInsertBeforeText = document.createTextNode("Dodaj element przed");
   liButtonInsertBefore.appendChild(liButtonInsertBeforeText);
   liButtonInsertBefore.addEventListener("click", () => {
-    const newLi = createLiItem();
+    const newLi = createLiItem(li.parentNode.children.length + 1);
     list.insertBefore(newLi, li);
   });
 
@@ -29,7 +28,7 @@ const createLiItem = () => {
   const liButtonReplaceText = document.createTextNode("Zamień");
   liButtonReplace.appendChild(liButtonReplaceText);
   liButtonReplace.addEventListener("click", () => {
-    const newLi = createLiItem();
+    const newLi = createLiItem(number + 1);
     list.replaceChild(newLi, li);
   });
 
@@ -37,18 +36,17 @@ const createLiItem = () => {
   const liButtonInsertToParentNodeText = document.createTextNode("Dodaj element do rodzica");
   liButtonInsertToParentNode.appendChild(liButtonInsertToParentNodeText);
   liButtonInsertToParentNode.addEventListener("click", () => {
-    const newLi = createLiItem();
+    const newLi = createLiItem(li.parentNode.children.length + 1);
     li.parentNode.appendChild(newLi);
   });
 
-  list.setAttribute("id", `list-item-${liCounter + 1}`);
+  list.setAttribute("id", `list-item-${number}`);
   li.appendChild(liText);
   li.appendChild(liButtonDelete);
   li.appendChild(liButtonInsertBefore);
   li.appendChild(liButtonReplace);
   li.appendChild(liButtonInsertToParentNode);
 
-  liCounter++;
   return li;
 };
 
@@ -56,7 +54,7 @@ const button = document.createElement("button");
 const buttonText = document.createTextNode("Dodaj element");
 button.appendChild(buttonText);
 button.addEventListener("click", () => {
-  const li = createLiItem();
+  const li = createLiItem(list.children.length + 1);
   list.appendChild(li);
 });
 root.appendChild(list);
