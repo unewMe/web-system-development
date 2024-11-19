@@ -38,5 +38,3 @@ function getRandomJoke(options = { exclude_tags: exclude_tags_default }) {
   }
   return null;
 }
-
-
