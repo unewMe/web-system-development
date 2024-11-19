@@ -2,6 +2,7 @@
 
 const demoBox = document.getElementById("demo-box");
 const result = document.getElementById("result");
+const resultKeyCode = document.getElementById("result-keyCode");
 
 function showEventInfo(event) {
   const altPressed = event.altKey ? "Alt: wciśnięty" : "Alt: nie wciśnięty";
@@ -40,4 +41,9 @@ demoBox.addEventListener("mouseout", (event) => {
   demoBox.style.backgroundColor = "#f0f0f0";
   demoBox.style.borderColor = "#333";
   demoBox.textContent = "Najedź myszką tutaj";
+});
+
+document.addEventListener("keydown", (event) => {
+  console.log(event.keyCode);
+  resultKeyCode.innerHTML = `Kod klawisza: ${event.keyCode}`;
 });
