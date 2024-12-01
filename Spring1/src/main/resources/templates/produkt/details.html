@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły Produktu</title>
+    <style>
+        .details-container {
+            width: 50%;
+            margin: 50px auto;
+            font-family: Arial, sans-serif;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .details-container h1 {
+            text-align: center;
+        }
+
+        .details-container p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .details-container a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .details-container a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="details-container">
+    <h1>Szczegóły Produktu</h1>
+    <p><strong>Id:</strong> <span th:text="${produkt.id}"></span></p>
+    <p><strong>Nazwa produktu:</strong> <span th:text="${produkt.nazwa}"></span></p>
+    <p><strong>Waga [kg]:</strong> <span th:text="${produkt.waga}"></span></p>
+    <p><strong>Cena [PLN]:</strong> <span th:text="${produkt.cena}"></span></p>
+    <p><strong>Kategoria:</strong> <span th:text="${produkt.kategoria}"></span></p>
+
+    <a href="/produkt/">Powrót do listy</a>
+</div>
+
+</body>
+</html>
