@@ -11,14 +11,25 @@ public class ProduktService {
 
     private final List<Produkt> productList = new ArrayList<>();
 
+    private boolean ifSeed = false;
+
     public ProduktService() {
-        seed();
+
     }
 
-    public void seed() {
-        productList.add(new Produkt(1L, "Chleb", 1.0, 5.20, "Pieczywo"));
-        productList.add(new Produkt(2L, "Masło", 0.25, 7.00, "Nabiał"));
-        productList.add(new Produkt(3L, "Mleko", 1.0, 3.50, "Nabiał"));
+    public boolean seed() {
+        if (!ifSeed) {
+            ifSeed = true;
+            productList.add(new Produkt(1L, "Chleb", 1.0, 5.20, "Pieczywo"));
+            productList.add(new Produkt(2L, "Masło", 0.25, 7.00, "Nabiał"));
+            productList.add(new Produkt(3L, "Mleko", 1.0, 3.50, "Nabiał"));
+
+            return true;
+        }
+
+        return false;
+
+
     }
 
     public List<Produkt> getAllProducts() {
@@ -43,14 +54,15 @@ public class ProduktService {
     }
 
     public boolean updateProduct(Produkt produkt) {
-        Produkt existingProduct = getProductById(produkt.getId());
-        if (existingProduct != null) {
-            productList.remove(existingProduct);
-            productList.add(produkt);
-            return true;
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId() == produkt.getId()) {
+                productList.set(i, produkt);
+                return true;
+            }
         }
         return false;
     }
+
 
     public boolean deleteProduct(Produkt produkt) {
         return productList.removeIf(existingProduct -> existingProduct.getId().equals(produkt.getId()));
