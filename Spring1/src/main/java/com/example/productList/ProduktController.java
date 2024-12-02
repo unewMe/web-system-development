@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.DateFormat;
 
@@ -51,6 +52,15 @@ public class ProduktController {
         return "produkt/index";
     }
 
+    @GetMapping("/produkt/seed")
+    public String seed(RedirectAttributes redirectAttributes) {
+        boolean state = produktService.seed();
+        if (!state) {
+            redirectAttributes.addFlashAttribute("message", "Seedowanie już zostało wykonane");
+        }
+        return "redirect:/produkt/";
+    }
+
     @GetMapping("/produkt/add")
     public String addForm(Model model) {
         model.addAttribute("produkt", new Produkt());
@@ -58,8 +68,11 @@ public class ProduktController {
     }
 
     @PostMapping("/produkt/add")
-    public String addProduct(@ModelAttribute Produkt produkt) {
-        produktService.addProduct(produkt);
+    public String addProduct(RedirectAttributes redirectAttributes, @ModelAttribute Produkt produkt) {
+        boolean state =  produktService.addProduct(produkt);
+        if (!state) {
+            redirectAttributes.addFlashAttribute("message", "Produkt o podanym ID już istnieje");
+        }
         return "redirect:/produkt/";
     }
 
@@ -83,8 +96,7 @@ public class ProduktController {
     }
 
     @PostMapping("/produkt/edit/{id}")
-    public String editProduct(@PathVariable long id, @ModelAttribute Produkt produkt) {
-        produkt.setId(id);
+    public String editProduct(@ModelAttribute Produkt produkt) {
         produktService.updateProduct(produkt);
         return "redirect:/produkt/";
     }
