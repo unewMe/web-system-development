@@ -49,7 +49,7 @@ public class ProduktController {
 
         model.addAttribute("produktList", produktList );
 
-        return "produkt/index";
+        return "index";
     }
 
     @GetMapping("/produkt/seed")
@@ -64,7 +64,7 @@ public class ProduktController {
     @GetMapping("/produkt/add")
     public String addForm(Model model) {
         model.addAttribute("produkt", new Produkt());
-        return "produkt/add";
+        return "add";
     }
 
     @PostMapping("/produkt/add")
@@ -90,7 +90,7 @@ public class ProduktController {
         Produkt produkt = produktService.getProductById(id);
         if (produkt != null) {
             model.addAttribute("produkt", produkt);
-            return "produkt/edit";
+            return "edit";
         }
         return "redirect:/produkt/";
     }
@@ -107,7 +107,7 @@ public class ProduktController {
         Produkt produkt = produktService.getProductById(id);
         if (produkt != null) {
             model.addAttribute("produkt", produkt);
-            return "produkt/details";
+            return "details";
         }
         return "redirect:/produkt/";
     }
