@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="./_shared/_layout.html">
+      layout:decorate="_shared/_layout">
+
 <head>
     <meta charset="UTF-8">
     <title layout:fragment="pageTitle" >Dodaj Produkt</title>
@@ -9,7 +10,7 @@
 </head>
 <body>
 
-<nav th:replace="produkt/fragment/menu :: menu"></nav>
+<nav th:replace="fragment/menu :: menu"></nav>
 
 <div layout:fragment="content" class="form-container">
 
