@@ -15,7 +15,7 @@ public class CategoryService {
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
-
+//TODO: categories should be returned without products
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
