@@ -1,5 +1,6 @@
 package com.example.productapp.validators;
 
+import com.example.productapp.dto.ProductDTO;
 import com.example.productapp.entity.Product;
 import com.example.productapp.service.CategoryService;
 import org.springframework.stereotype.Component;
@@ -18,12 +19,12 @@ public class ProductValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return Product.class.equals(clazz);
+        return ProductDTO.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        Product product = (Product) target;
+        ProductDTO product = (ProductDTO) target;
 
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name.empty", "Product name is required.");
@@ -44,10 +45,10 @@ public class ProductValidator implements Validator {
         }
 
 
-        if (product.getCategory() != null &&
+        if (product.getCategoryId() != null &&
                 categoryService.getAllCategories().stream()
-                        .noneMatch(category -> category.getId().equals(product.getCategory().getId()))) {
-            errors.rejectValue("category", "category.invalid", "Category must exist.");
+                        .noneMatch(category -> category.getId().equals(product.getCategoryId()))) {
+            errors.rejectValue("categoryId", "category.invalid", "Category must exist.");
         }
 
     }
