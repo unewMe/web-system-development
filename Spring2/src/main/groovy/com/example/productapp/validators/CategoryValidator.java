@@ -1,5 +1,6 @@
 package com.example.productapp.validators;
 
+import com.example.productapp.dto.CategoryDTO;
 import com.example.productapp.entity.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,12 +17,12 @@ public class CategoryValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return Category.class.equals(clazz);
+        return CategoryDTO.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        Category category = (Category) target;
+        CategoryDTO category = (CategoryDTO) target;
 
         logger.info("Starting validation for category: {}", category);
 
