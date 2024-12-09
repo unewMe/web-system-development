@@ -5,8 +5,6 @@ const images = document.images;
 const links = document.links;
 const forms = document.forms;
 const anchors = document.anchors;
-const item = document.item;
-const namedItem = document.namedItem;
 
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
@@ -29,7 +27,7 @@ button2.addEventListener("click", () => {
 });
 
 button3.addEventListener("click", () => {
-  forms[0].innerHTML = "Hello, tutaj zmieniony item z listy formularzy";
+  forms.item(0).innerHTML = "Hello, tutaj zmieniony item z listy formularzy";
   const formsContent = Array.from(forms)
     .map((form) => form.outerHTML)
     .join("\n");
