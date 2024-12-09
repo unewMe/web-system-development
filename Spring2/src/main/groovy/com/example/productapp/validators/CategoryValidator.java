@@ -1,7 +1,6 @@
 package com.example.productapp.validators;
 
 import com.example.productapp.dto.CategoryDTO;
-import com.example.productapp.entity.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

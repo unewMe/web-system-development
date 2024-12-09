@@ -1,7 +1,6 @@
 package com.example.productapp.validators;
 
 import com.example.productapp.dto.ProductDTO;
-import com.example.productapp.entity.Product;
 import com.example.productapp.service.CategoryService;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
