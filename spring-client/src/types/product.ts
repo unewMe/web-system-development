@@ -4,7 +4,8 @@ interface Product {
   weight: number;
   price: number;
   index: number;
-  category: string;
+  categoryName: string;
+  categoryId: number;
 }
 
 export type { Product };
