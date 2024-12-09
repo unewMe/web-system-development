@@ -2,6 +2,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Product } from "@/types/product";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "./ui/button";
+import { NewProductDialog } from "./new-product.dialog";
+import { EditProductDialog } from "./edit-product-dialog";
 
 const ProductsTable = () => {
   const queryClient = useQueryClient();
@@ -32,7 +34,7 @@ const ProductsTable = () => {
     <>
       <div className="flex gap-4 self-start items-center">
         <h2 className="text-2xl">Products table</h2>
-        <Button>Add product</Button>
+        <NewProductDialog />
       </div>
       <Table>
         <TableHeader>
@@ -50,9 +52,17 @@ const ProductsTable = () => {
               <TableCell>{product.name}</TableCell>
               <TableCell>{product.weight}</TableCell>
               <TableCell>{product.price}</TableCell>
-              <TableCell>{product.category}</TableCell>
-              <TableCell>
+              <TableCell>{product.categoryName}</TableCell>
+              <TableCell className="flex gap-2">
                 <Button onClick={() => deleteProduct(product.id)}>Delete product</Button>
+                <EditProductDialog
+                  id={product.id}
+                  name={product.name}
+                  index={product.index}
+                  weight={product.weight}
+                  price={product.price}
+                  categoryId={product.categoryId}
+                />
               </TableCell>
             </TableRow>
           ))}

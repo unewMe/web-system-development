@@ -2,29 +2,17 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Category } from "@/types/category";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "./ui/button";
+import { NewCategoryDialog } from "./new-category-dialog";
+import { EditCategoryDialog } from "./edit-category-dialog";
 
 const CategoriesTable = () => {
   const queryClient = useQueryClient();
-  const getProducts = async () => {
+
+  const getCategories = async () => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`);
     return response.json();
   };
-  const addCategory = async () => {
-    const name = prompt("Enter category name:");
-    const code = prompt("Enter category code:");
-    if (!name || !code || !/^[A-Z]\d$/.test(code)) {
-      alert("Invalid name or code");
-      return;
-    }
-    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, code }),
-    });
-    queryClient.invalidateQueries({ queryKey: ["categories"] });
-  };
+
   const deleteCategory = async (id: number) => {
     if (!confirm("Are you sure you want to delete this category?")) {
       return;
@@ -33,13 +21,14 @@ const CategoriesTable = () => {
       method: "DELETE",
     });
     queryClient.invalidateQueries({ queryKey: ["categories"] });
+    queryClient.invalidateQueries({ queryKey: ["products"] });
   };
   const {
     isPending,
     error,
     data: categories,
     isFetching,
-  } = useQuery<Category[]>({ queryKey: ["categories"], queryFn: getProducts });
+  } = useQuery<Category[]>({ queryKey: ["categories"], queryFn: getCategories });
 
   if (isPending || isFetching) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -47,7 +36,7 @@ const CategoriesTable = () => {
     <>
       <div className="flex gap-4 self-start items-center">
         <h2 className="text-2xl">Categories table</h2>
-        <Button onClick={addCategory}>Add category</Button>
+        <NewCategoryDialog />
       </div>
       <Table>
         <TableHeader>
@@ -62,8 +51,9 @@ const CategoriesTable = () => {
             <TableRow key={category.id}>
               <TableCell>{category.name}</TableCell>
               <TableCell>{category.code}</TableCell>
-              <TableCell>
+              <TableCell className="flex gap-2">
                 <Button onClick={() => deleteCategory(category.id)}>Delete</Button>
+                <EditCategoryDialog id={category.id} name={category.name} code={category.code} />
               </TableCell>
             </TableRow>
           ))}
