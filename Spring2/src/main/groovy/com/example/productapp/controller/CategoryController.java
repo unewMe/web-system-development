@@ -58,16 +58,16 @@ public class CategoryController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCategory(@PathVariable("id") Long id, @RequestBody @Validated Category category, BindingResult result) {
+    public ResponseEntity<?> updateCategory(@PathVariable("id") Long id, @RequestBody @Validated CategoryDTO categoryDTO, BindingResult result) {
         if(categoryService.getAllCategories().stream().noneMatch(c -> c.getId().equals(id))){
             return ResponseEntity.badRequest().body("Category with id " + id + " not found");
         }
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().body(result.getAllErrors());
         }
-        category.setId(id);
-        Category updatedCategory = categoryService.updateCategory(id, category);
-        return ResponseEntity.ok(updatedCategory);
+        Category category = CategoryMapper.toEntity(categoryDTO);
+        Category updatedCategory = categoryService.saveCategory(category);
+        return ResponseEntity.ok(CategoryMapper.toDTO(updatedCategory));
     }
 
     @DeleteMapping("/{id}")
