@@ -34,8 +34,8 @@ const NewProductDialog = () => {
     const price = formData.get("price") as string;
     const weight = formData.get("weight") as string;
     const categoryId = formData.get("category") as string;
-    if (!name || !index || !price || !weight) {
-      alert("Invalid name or index or price or weight");
+    if (!name || !index || !price || !weight || !categoryId) {
+      alert("Invalid name or index or price or weight or category");
       return;
     }
     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`, {
