@@ -21,8 +21,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import React from "react";
 
 const NewProductDialog = () => {
+  const selectRef = React.useRef<string>(undefined);
   const getCategories = async () => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`);
     return response.json();
@@ -34,10 +36,6 @@ const NewProductDialog = () => {
     const price = formData.get("price") as string;
     const weight = formData.get("weight") as string;
     const categoryId = formData.get("category") as string;
-    if (!name || !index || !price || !weight || !categoryId) {
-      alert("Invalid name or index or price or weight or category");
-      return;
-    }
     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`, {
       method: "POST",
       headers: {
@@ -54,7 +52,15 @@ const NewProductDialog = () => {
         <Button>Create product</Button>
       </DialogTrigger>
       <DialogContent>
-        <form action={createProduct}>
+        <form
+          action={createProduct}
+          onSubmit={(e) => {
+            if (!selectRef.current) {
+              e.preventDefault();
+              alert("Please select a category");
+            }
+          }}
+        >
           <DialogHeader>
             <DialogTitle>Create product</DialogTitle>
             <DialogDescription>Create new product</DialogDescription>
@@ -64,27 +70,27 @@ const NewProductDialog = () => {
               <Label htmlFor="name" className="text-right">
                 Name
               </Label>
-              <Input name="name" className="col-span-3" />
+              <Input name="name" className="col-span-3" required />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="index" className="text-right">
                 Index
               </Label>
-              <Input name="index" className="col-span-3" type="number" min={1} step={1} />
+              <Input name="index" className="col-span-3" type="number" min={1} step={1} required />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="price" className="text-right">
                 Price
               </Label>
-              <Input name="price" className="col-span-3" type="number" step={0.1} />
+              <Input name="price" className="col-span-3" type="number" step={0.1} required min={0.1} />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="weight" className="text-right">
                 Weight
               </Label>
-              <Input name="weight" className="col-span-3" step={0.1} />
+              <Input name="weight" className="col-span-3" step={0.1} required min={0.1} />
             </div>
-            <Select name="category">
+            <Select name="category" onValueChange={(e) => (selectRef.current = e)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select a category" />
               </SelectTrigger>

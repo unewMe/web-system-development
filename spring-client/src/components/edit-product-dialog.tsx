@@ -48,10 +48,6 @@ const EditProductDialog = ({
     const price = formData.get("price") as string;
     const weight = formData.get("weight") as string;
     const categoryId = formData.get("category") as string;
-    if (!name || !index || !price || !weight || !categoryId) {
-      alert("Invalid name or index or price or weight or category");
-      return;
-    }
     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/${id}`, {
       method: "PUT",
       headers: {
@@ -78,7 +74,7 @@ const EditProductDialog = ({
               <Label htmlFor="name" className="text-right">
                 Name
               </Label>
-              <Input name="name" className="col-span-3" defaultValue={name} />
+              <Input name="name" className="col-span-3" defaultValue={name} required />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="index" className="text-right">
@@ -91,19 +87,34 @@ const EditProductDialog = ({
                 min={1}
                 step={1}
                 defaultValue={index}
+                required
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="price" className="text-right">
                 Price
               </Label>
-              <Input name="price" className="col-span-3" type="number" step={0.1} defaultValue={price} />
+              <Input
+                name="price"
+                className="col-span-3"
+                type="number"
+                step={0.1}
+                defaultValue={price}
+                min={0.1}
+              />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="weight" className="text-right">
                 Weight
               </Label>
-              <Input name="weight" className="col-span-3" step={0.1} defaultValue={weight} />
+              <Input
+                name="weight"
+                className="col-span-3"
+                step={0.1}
+                defaultValue={weight}
+                required
+                min={0.1}
+              />
             </div>
             <Select name="category" defaultValue={categoryId?.toString()}>
               <SelectTrigger>
