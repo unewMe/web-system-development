@@ -1,14 +1,24 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Product } from "@/types/product";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "./ui/button";
 import { NewProductDialog } from "./new-product.dialog";
 import { EditProductDialog } from "./edit-product-dialog";
+import { ProductDetailsDialog } from "./product-details-dialog";
 
 const ProductsTable = () => {
   const queryClient = useQueryClient();
   const getProducts = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/products`
+    );
     return response.json();
   };
   const deleteProduct = async (id: number) => {
@@ -54,7 +64,16 @@ const ProductsTable = () => {
               <TableCell>{product.price}</TableCell>
               <TableCell>{product.categoryName}</TableCell>
               <TableCell className="flex gap-2">
-                <Button onClick={() => deleteProduct(product.id)}>Delete product</Button>
+                <ProductDetailsDialog
+                  name={product.name}
+                  index={product.index}
+                  weight={product.weight}
+                  price={product.price}
+                  categoryName={product.categoryName}
+                />
+                <Button onClick={() => deleteProduct(product.id)}>
+                  Delete product
+                </Button>
                 <EditProductDialog
                   id={product.id}
                   name={product.name}
