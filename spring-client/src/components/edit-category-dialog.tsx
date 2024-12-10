@@ -47,13 +47,13 @@ const EditCategoryDialog = ({ id, name, code }: { id: number; name: string; code
               <Label htmlFor="name" className="text-right">
                 Name
               </Label>
-              <Input name="name" className="col-span-3" defaultValue={name} />
+              <Input name="name" className="col-span-3" defaultValue={name} required />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="code" className="text-right">
                 Code
               </Label>
-              <Input name="code" className="col-span-3" defaultValue={code} />
+              <Input name="code" className="col-span-3" defaultValue={code} required pattern="[A-Z][0-9]" />
             </div>
           </div>
           <DialogFooter>
