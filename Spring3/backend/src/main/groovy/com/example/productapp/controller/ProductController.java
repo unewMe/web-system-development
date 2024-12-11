@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import org.springframework.security.access.prepost.PreAuthorize;
-
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -29,7 +27,7 @@ public class ProductController {
     @Autowired
     private final ProductValidator productValidator;
 
-    public ProductController(ProductService productService, CategoryService categoryService, ProductValidator productValidator) {
+    public ProductController(ProductService productService, CategoryService categoryService ,ProductValidator productValidator) {
         this.productService = productService;
         this.categoryService = categoryService;
         this.productValidator = productValidator;
@@ -41,35 +39,37 @@ public class ProductController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<ProductDTO> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> createProduct(@RequestBody @Validated ProductDTO productDTO, BindingResult result) {
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().body(result.getAllErrors());
         }
+
         Category category = null;
         if (productDTO.getCategoryId() != null) {
             category = categoryService.getCategoryById(productDTO.getCategoryId());
         }
         Product product = ProductMapper.toEntity(productDTO, category);
         Product savedProduct = productService.saveProduct(product);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(ProductMapper.toDTO(savedProduct));
     }
 
+
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> updateProduct(@PathVariable("id") Long id, @RequestBody @Validated ProductDTO productDTO, BindingResult result) {
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().body(result.getAllErrors());
         }
+
         if (productService.getAllProducts().stream().noneMatch(p -> p.getId().equals(id))) {
             return ResponseEntity.badRequest().body("Product with id " + id + " not found");
         }
+
         Category category = null;
         if (productDTO.getCategoryId() != null) {
             category = categoryService.getCategoryById(productDTO.getCategoryId());
@@ -77,13 +77,16 @@ public class ProductController {
         Product product = ProductMapper.toEntity(productDTO, category);
         product.setId(id);
         Product updatedProduct = productService.updateProduct(id, product);
+
         return ResponseEntity.ok(ProductMapper.toDTO(updatedProduct));
     }
 
+
+
+
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteProduct(@PathVariable("id") Long id) {
-        if(productService.getAllProducts().stream().noneMatch(p -> p.getId().equals(id))) {
+        if(productService.getAllProducts().stream().noneMatch(p -> p.getId().equals(id))){
             return ResponseEntity.badRequest().body("Product with id " + id + " not found");
         }
         productService.deleteProduct(id);

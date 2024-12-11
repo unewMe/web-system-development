@@ -17,12 +17,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import org.springframework.security.access.prepost.PreAuthorize;
-
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     private final CategoryService categoryService;
     @Autowired
     private final CategoryValidator categoryValidator;
@@ -38,27 +37,29 @@ public class CategoryController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<CategoryDTO> getAllCategories() {
         return categoryService.getAllCategories();
     }
 
+
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> createCategory(@RequestBody @Validated CategoryDTO categoryDTO, BindingResult result) {
         log.info("Creating category: {}", categoryDTO);
+        log.info("Binding result: {}", result);
+
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().body(result.getAllErrors());
         }
+
         Category category = CategoryMapper.toEntity(categoryDTO);
         Category savedCategory = categoryService.saveCategory(category);
         return ResponseEntity.status(HttpStatus.CREATED).body(CategoryMapper.toDTO(savedCategory));
     }
 
+
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> updateCategory(@PathVariable("id") Long id, @RequestBody @Validated CategoryDTO categoryDTO, BindingResult result) {
-        if(categoryService.getAllCategories().stream().noneMatch(c -> c.getId().equals(id))) {
+        if(categoryService.getAllCategories().stream().noneMatch(c -> c.getId().equals(id))){
             return ResponseEntity.badRequest().body("Category with id " + id + " not found");
         }
         if (result.hasErrors()) {
@@ -70,13 +71,11 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteCategory(@PathVariable("id") Long id) {
-        if(categoryService.getAllCategories().stream().noneMatch(c -> c.getId().equals(id))) {
+        if(categoryService.getAllCategories().stream().noneMatch(c -> c.getId().equals(id))){
             return ResponseEntity.badRequest().body("Category with id " + id + " not found");
         }
         categoryService.deleteCategory(id);
         return ResponseEntity.ok().body("Category with id " + id + " deleted");
     }
 }
-
