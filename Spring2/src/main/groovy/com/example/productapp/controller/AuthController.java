@@ -33,10 +33,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
         try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(userDTO.getUsername(), userDTO.getPassword())
-            );
-            
+
             User user = userService.findByUsername(userDTO.getUsername());
             if (user == null) {
                 return ResponseEntity.status(401).body("Invalid username or password");

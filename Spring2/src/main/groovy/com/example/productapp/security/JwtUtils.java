@@ -3,6 +3,7 @@ package com.example.productapp.security;
 import io.jsonwebtoken.*;
 import org.springframework.stereotype.Component;
 
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.Map;
 @Component
 public class JwtUtils {
 
-    private static final String SECRET_KEY = "your_secret_key";
+    private static final String SECRET_KEY = Base64.getEncoder().encodeToString("this_is_a_very_secure_secret_key!".getBytes());
     private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 10; // 10 godzin
 
     public String generateToken(String username, Map<String, Object> claims) {
