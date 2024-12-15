@@ -54,7 +54,7 @@ public class AuthController {
         User newUser = new User();
         newUser.setUsername(userDTO.getUsername());
 
-        newUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        newUser.setPassword(userDTO.getPassword());
         newUser.setRole(User.Role.valueOf(userDTO.getRole().toUpperCase()));
 
         userService.saveUser(newUser);
