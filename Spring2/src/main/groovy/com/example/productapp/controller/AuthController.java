@@ -37,17 +37,29 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
         try {
             // Authenticate the user
-            Authentication authentication = authenticationManager.authenticate(
+
+           authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             userDTO.getUsername(),
                             userDTO.getPassword()
                     )
             );
 
-            SecurityContextHolder.getContext().setAuthentication(authentication);
 
             // Retrieve user details
+
+
+
             User user = userService.findByUsername(userDTO.getUsername());
+
+            String password = passwordEncoder.encode(userDTO.getPassword());
+
+            System.out.println("aaa" + password);
+            System.out.println(user);
+
+            if (!passwordEncoder.matches(userDTO.getPassword(), user.getPassword())) {
+                throw new Error("");
+            }
 
             // Prepare claims (you can add more claims if needed)
             Map<String, Object> claims = new HashMap<>();
@@ -71,7 +83,7 @@ public class AuthController {
 
         User newUser = new User();
         newUser.setUsername(userDTO.getUsername());
-        newUser.setPassword(passwordEncoder.encode(userDTO.getPassword())); // Encode the password
+        newUser.setPassword(userDTO.getPassword()); // Encode the password
         newUser.setRole(User.Role.valueOf(userDTO.getRole().toUpperCase()));
 
         userService.saveUser(newUser);
