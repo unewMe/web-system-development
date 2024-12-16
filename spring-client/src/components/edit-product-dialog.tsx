@@ -38,7 +38,10 @@ const EditProductDialog = ({
   categoryId: number;
 }) => {
   const getCategories = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
     return response.json();
   };
   const queryClient = useQueryClient();
@@ -56,6 +59,7 @@ const EditProductDialog = ({
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({ name, index, price, weight, categoryId }),
     });

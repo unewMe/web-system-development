@@ -6,10 +6,14 @@ import { NewCategoryDialog } from "./new-category-dialog";
 import { EditCategoryDialog } from "./edit-category-dialog";
 
 const CategoriesTable = () => {
+  const isAdmin = localStorage.getItem("role") === "ADMIN";
   const queryClient = useQueryClient();
 
   const getCategories = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
     return response.json();
   };
 
@@ -19,6 +23,7 @@ const CategoriesTable = () => {
     }
     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories/${id}`, {
       method: "DELETE",
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     queryClient.invalidateQueries({ queryKey: ["categories"] });
     queryClient.invalidateQueries({ queryKey: ["products"] });
@@ -36,14 +41,14 @@ const CategoriesTable = () => {
     <>
       <div className="flex gap-4 self-start items-center">
         <h2 className="text-2xl">Categories table</h2>
-        <NewCategoryDialog />
+        {isAdmin && <NewCategoryDialog />}
       </div>
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead>Category Name</TableHead>
             <TableHead>Code</TableHead>
-            <TableHead>Actions</TableHead>
+            {isAdmin && <TableHead>Actions</TableHead>}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -51,10 +56,12 @@ const CategoriesTable = () => {
             <TableRow key={category.id}>
               <TableCell>{category.name}</TableCell>
               <TableCell>{category.code}</TableCell>
-              <TableCell className="flex gap-2">
-                <Button onClick={() => deleteCategory(category.id)}>Delete</Button>
-                <EditCategoryDialog id={category.id} name={category.name} code={category.code} />
-              </TableCell>
+              {isAdmin && (
+                <TableCell className="flex gap-2">
+                  <Button onClick={() => deleteCategory(category.id)}>Delete</Button>
+                  <EditCategoryDialog id={category.id} name={category.name} code={category.code} />
+                </TableCell>
+              )}
             </TableRow>
           ))}
         </TableBody>

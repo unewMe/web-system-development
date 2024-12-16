@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const login = async ({ username, password }: { username: string; password: string }) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`, {
@@ -15,21 +16,23 @@ const login = async ({ username, password }: { username: string; password: strin
       username,
       password,
     }),
-    credentials: "include", // To handle cookies
   });
   console.log(response);
   if (!response.ok) {
     throw new Error("Login failed");
   }
-
-  return response.json(); // Or `response.text()` depending on the response type
+  return response.json();
 };
 
 export default function LoginPage() {
+  const router = useRouter();
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
       console.log("Login successful:", data);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
+      router.push("/");
     },
     onError: (error) => {
       console.error("Error during login:", error);
@@ -38,7 +41,6 @@ export default function LoginPage() {
   const handleSubmit = (formData: FormData) => {
     const username = formData.get("username") as string;
     const password = formData.get("password") as string;
-    console.log(username, password);
     mutation.mutate({ username, password });
   };
   return (
@@ -53,9 +55,13 @@ export default function LoginPage() {
           <Label htmlFor="password">Password</Label>
           <Input name="password" type="password" required />
         </div>
-        <Button type="submit">Login</Button>
+        <div className="flex justify-between w-full items-baseline">
+          <Button type="submit">Login</Button>
+          <Link href="/signup" className="underline self-end">
+            Signup
+          </Link>
+        </div>
       </form>
-      <Link href="/signup">signup</Link>
     </div>
   );
 }

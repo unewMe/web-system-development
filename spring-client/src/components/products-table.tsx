@@ -1,24 +1,39 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Product } from "@/types/product";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "./ui/button";
 import { NewProductDialog } from "./new-product.dialog";
 import { EditProductDialog } from "./edit-product-dialog";
 import { ProductDetailsDialog } from "./product-details-dialog";
+import { useCookies } from "react-cookie";
+import React from "react";
+import Link from "next/link";
 
 const ProductsTable = () => {
+  const [cookies, setCookie] = useCookies(["products"]);
+  const [productsInCart, setProductsInCart] = React.useState<
+    { id: number; product: Product; amount: number }[]
+  >(cookies.products || []);
+  const isAdmin = localStorage.getItem("role") === "ADMIN";
   const queryClient = useQueryClient();
+  const addProductToCart = (product: Product) => {
+    const updatedCart = [...productsInCart];
+    const productInCart = updatedCart.find((p) => p.id === product.id);
+    if (productInCart) {
+      productInCart.amount++;
+    } else {
+      updatedCart.push({ id: product.id, product, amount: 1 });
+    }
+    setProductsInCart(updatedCart);
+    setCookie("products", JSON.stringify(updatedCart));
+  };
+  console.log(cookies);
   const getProducts = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/products`
-    );
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+    console.log(response);
     return response.json();
   };
   const deleteProduct = async (id: number) => {
@@ -27,6 +42,7 @@ const ProductsTable = () => {
     }
     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/${id}`, {
       method: "DELETE",
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     queryClient.invalidateQueries({ queryKey: ["products"] });
   };
@@ -44,7 +60,8 @@ const ProductsTable = () => {
     <>
       <div className="flex gap-4 self-start items-center">
         <h2 className="text-2xl">Products table</h2>
-        <NewProductDialog />
+        {isAdmin && <NewProductDialog />}
+        {!isAdmin && <Link href={"/cart"}>Go to cart</Link>}
       </div>
       <Table>
         <TableHeader>
@@ -53,7 +70,8 @@ const ProductsTable = () => {
             <TableHead>Weight[kg]</TableHead>
             <TableHead>Price[PLN]</TableHead>
             <TableHead>Category</TableHead>
-            <TableHead>Actions</TableHead>
+            {isAdmin && <TableHead>Actions</TableHead>}
+            {!isAdmin && <TableHead>Action</TableHead>}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -63,26 +81,31 @@ const ProductsTable = () => {
               <TableCell>{product.weight}</TableCell>
               <TableCell>{product.price}</TableCell>
               <TableCell>{product.categoryName}</TableCell>
-              <TableCell className="flex gap-2">
-                <ProductDetailsDialog
-                  name={product.name}
-                  index={product.index}
-                  weight={product.weight}
-                  price={product.price}
-                  categoryName={product.categoryName}
-                />
-                <Button onClick={() => deleteProduct(product.id)}>
-                  Delete product
-                </Button>
-                <EditProductDialog
-                  id={product.id}
-                  name={product.name}
-                  index={product.index}
-                  weight={product.weight}
-                  price={product.price}
-                  categoryId={product.categoryId}
-                />
-              </TableCell>
+              {isAdmin && (
+                <TableCell className="flex gap-2">
+                  <ProductDetailsDialog
+                    name={product.name}
+                    index={product.index}
+                    weight={product.weight}
+                    price={product.price}
+                    categoryName={product.categoryName}
+                  />
+                  <Button onClick={() => deleteProduct(product.id)}>Delete product</Button>
+                  <EditProductDialog
+                    id={product.id}
+                    name={product.name}
+                    index={product.index}
+                    weight={product.weight}
+                    price={product.price}
+                    categoryId={product.categoryId}
+                  />
+                </TableCell>
+              )}
+              {!isAdmin && (
+                <TableCell>
+                  <Button onClick={() => addProductToCart(product)}>Add to cart</Button>
+                </TableCell>
+              )}
             </TableRow>
           ))}
         </TableBody>

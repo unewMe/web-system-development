@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const signup = async ({ username, password }: { username: string; password: string }) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`, {
@@ -28,11 +29,13 @@ const signup = async ({ username, password }: { username: string; password: stri
   return response.text();
 };
 
-export default function LoginPage() {
+export default function SignupPage() {
+  const router = useRouter();
   const mutation = useMutation({
     mutationFn: signup,
     onSuccess: (data) => {
       console.log("Signup successful:", data);
+      router.push("/login");
     },
     onError: (error) => {
       console.error("Error during signup:", error);
@@ -55,9 +58,13 @@ export default function LoginPage() {
           <Label htmlFor="password">Password</Label>
           <Input name="password" type="password" required />
         </div>
-        <Button type="submit">Login</Button>
+        <div className="flex justify-between w-full items-baseline">
+          <Button type="submit">Signup</Button>
+          <Link href="/login" className="underline self-end">
+            Login
+          </Link>
+        </div>
       </form>
-      <Link href="/login">login</Link>
     </div>
   );
 }
