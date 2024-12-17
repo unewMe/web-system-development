@@ -17,7 +17,6 @@ const login = async ({ username, password }: { username: string; password: strin
       password,
     }),
   });
-  console.log(response);
   if (!response.ok) {
     throw new Error("Login failed");
   }
@@ -30,12 +29,17 @@ export default function LoginPage() {
     mutationFn: login,
     onSuccess: (data) => {
       console.log("Login successful:", data);
+      setTimeout(() => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+        console.log("Token and role removed after 1 minute");
+      }, 600000); // 60000 milliseconds = 1 minute
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
       router.push("/");
     },
-    onError: (error) => {
-      console.error("Error during login:", error);
+    onError: () => {
+      alert("Invalid username or password");
     },
   });
   const handleSubmit = (formData: FormData) => {

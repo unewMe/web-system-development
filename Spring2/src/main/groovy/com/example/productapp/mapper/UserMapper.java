@@ -9,7 +9,7 @@ public class UserMapper {
         UserDTO dto = new UserDTO();
         dto.setUsername(user.getUsername());
         dto.setPassword(user.getPassword());
-        dto.setRole(user.getRole().name()); // Mapowanie roli na String
+        dto.setRole(user.getRole().name());
         return dto;
     }
 
@@ -17,7 +17,7 @@ public class UserMapper {
         User user = new User();
         user.setUsername(dto.getUsername());
         user.setPassword(dto.getPassword());
-        user.setRole(User.Role.valueOf(dto.getRole())); // Mapowanie roli ze String na Enum
+        user.setRole(User.Role.valueOf(dto.getRole()));
         return user;
     }
 }

@@ -37,8 +37,8 @@ export default function SignupPage() {
       console.log("Signup successful:", data);
       router.push("/login");
     },
-    onError: (error) => {
-      console.error("Error during signup:", error);
+    onError: () => {
+      alert("User already exists");
     },
   });
   const handleSubmit = (formData: FormData) => {

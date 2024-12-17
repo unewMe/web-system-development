@@ -36,18 +36,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String username = null;
         String token = null;
 
-        // Extract the token from the Authorization header
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             token = authorizationHeader.substring(7);
             try {
                 username = jwtUtils.extractUsername(token);
             } catch (Exception e) {
-                // Invalid token
                 logger.error("Invalid JWT token: {}");
             }
         }
 
-        // Validate the token and set authentication
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             User userDetails = userService.findByUsername(username);
 
@@ -64,7 +61,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         chain.doFilter(request, response);
     }
 
-    // Optionally, override shouldNotFilter to exclude certain endpoints
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
         String path = request.getServletPath();

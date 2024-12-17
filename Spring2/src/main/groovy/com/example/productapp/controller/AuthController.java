@@ -36,8 +36,6 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
         try {
-            // Authenticate the user
-
            authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             userDTO.getUsername(),
@@ -46,29 +44,19 @@ public class AuthController {
             );
 
 
-            // Retrieve user details
-
-
-
             User user = userService.findByUsername(userDTO.getUsername());
 
             String password = passwordEncoder.encode(userDTO.getPassword());
-
-            System.out.println("aaa" + password);
-            System.out.println(user);
 
             if (!passwordEncoder.matches(userDTO.getPassword(), user.getPassword())) {
                 throw new Error("");
             }
 
-            // Prepare claims (you can add more claims if needed)
             Map<String, Object> claims = new HashMap<>();
             claims.put("role", user.getRole().name());
 
-            // Generate JWT token
             String token = jwtUtils.generateToken(user.getUsername(), claims);
 
-            // Return the token in the response
             return ResponseEntity.ok(Map.of("token", token, "role", user.getRole().name()));
         } catch (Exception e) {
             return ResponseEntity.status(401).body("Invalid username or password");
@@ -83,17 +71,15 @@ public class AuthController {
 
         User newUser = new User();
         newUser.setUsername(userDTO.getUsername());
-        newUser.setPassword(userDTO.getPassword()); // Encode the password
+        newUser.setPassword(userDTO.getPassword());
         newUser.setRole(User.Role.valueOf(userDTO.getRole().toUpperCase()));
 
         userService.saveUser(newUser);
         return ResponseEntity.ok("User registered successfully");
     }
 
-    // Optional: Since JWT is stateless, logout can be handled on the client side by discarding the token
     @PostMapping("/logout")
     public ResponseEntity<?> logout() {
-        // Optionally implement token blacklisting if needed
         SecurityContextHolder.clearContext();
         return ResponseEntity.ok("Logout successful");
     }

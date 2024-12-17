@@ -30,7 +30,6 @@ public class UserService {
     }
 
     public User saveUser(User user) {
-        // Hashowanie hasła przed zapisem
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
@@ -42,7 +41,6 @@ public class UserService {
             User existingUser = existingUserOpt.get();
 
             existingUser.setUsername(user.getUsername());
-            // Hashowanie hasła tylko jeśli jest zmienione
             if (!existingUser.getPassword().equals(user.getPassword())) {
                 existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
             }
