@@ -23,7 +23,7 @@ function showEventInfo(event) {
 
 demoBox.addEventListener("mousemove", (event) => {
   showEventInfo(event);
-  demoBox.style.backgroundColor = "#e0e0ff";
+  demoBox.style.backgroundCol%or = "#e0e0ff";
   demoBox.textContent = "Poruszasz myszą!";
 });
 
