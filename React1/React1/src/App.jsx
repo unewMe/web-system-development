@@ -25,7 +25,7 @@ const App = () => {
         <Card
           title="KArtEczka"
           description="To jest skibidi karta"
-          image="https://via.placeholder.com/300"
+          image="https://cms.solvro.pl/assets/a04dc2e5-2354-495d-aed4-d7db9a6d313c?key=member"
         />
         <Gallery images={images} />
         <Button label="Kliknij mnie" onClick={handleClick} />
